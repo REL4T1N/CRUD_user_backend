@@ -20,44 +20,43 @@ requirements.txt для зависимостей
 
 🚀 Установка и запуск
 📂 Клонирование репозитория
-bash
-Копировать
-Редактировать
+```bash
 git clone <URL-репозитория>
 cd <название-папки-проекта>
 🧪 Установка зависимостей
+```
 💻 Linux / macOS:
-bash
-Копировать
-Редактировать
+```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
 🪟 Windows (CMD):
-cmd
-Копировать
-Редактировать
+```cmd
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
+```
 🪟 Windows (PowerShell):
-powershell
-Копировать
-Редактировать
+```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+```
 ⚙️ Запуск FastAPI сервера
 Linux / macOS:
-bash
+
+```bash
 uvicorn main:app --reload
+```
 Windows:
-cmd
+```cmd
 uvicorn main:app --reload
+```
 По умолчанию приложение будет доступно по адресу: http://127.0.0.1:8000
 
 📄 Структура проекта (упрощённая)
-bash
+```bash
 ├── main.py                  # Точка входа FastAPI-приложения
 ├── routes/
 │   └── users.py             # Все маршруты, связанные с пользователями
@@ -66,6 +65,7 @@ bash
 ├── schemas/                 # Pydantic-схемы
 ├── dependencies.py          # Подключение БД
 ├── requirements.txt         # Список зависимостей
+```
 
 🔗 Полезные URL
 Swagger UI: http://127.0.0.1:8000/docs
