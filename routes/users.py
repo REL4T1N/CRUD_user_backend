@@ -60,3 +60,11 @@ async def delete_user_info(user_id: int, response: Response, db: Session = Depen
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
     response.delete_cookie(key="user_id")
     return {"message": "User deleted successfully"}
+
+# проверка user_id в Cookie
+@user_router.get("/users/me")
+async def get_current_user(user_id: int = Cookie(default=None, alias="user_id"), db: Session = Depends(get_db)):
+    user = get_user_by_id(user_id=user_id, db=db)
+    if not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Unauthorized")
+    return user

@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -9,7 +10,7 @@ app = FastAPI()
 # Настройка CORS для работы с фронтендом
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Порт Vite по умолчанию
+    allow_origins=["http://localhost:4000"],  # Порт Vite по умолчанию
     allow_credentials=True,  # Разрешаем куки
     allow_methods=["*"],  # Разрешаем все HTTP-методы
     allow_headers=["*"],  # Разрешаем все заголовки
@@ -19,4 +20,7 @@ app.add_middleware(
 app.include_router(user_router)
 
 # Монтирование статических файлов
-# app.mount("/", StaticFiles(directory="./backend/static", html=True), name="static")
+static_dir = os.path.join(os.path.dirname(__file__), "static")
+
+# Монтируем статику
+app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
