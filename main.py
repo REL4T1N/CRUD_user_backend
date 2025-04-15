@@ -22,5 +22,6 @@ app.include_router(user_router)
 # Монтирование статических файлов
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 
+
 # Монтируем статику
 app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")

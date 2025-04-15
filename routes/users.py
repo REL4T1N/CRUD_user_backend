@@ -61,6 +61,7 @@ async def delete_user_info(user_id: int, response: Response, db: Session = Depen
     response.delete_cookie(key="user_id")
     return {"message": "User deleted successfully"}
 
+
 # проверка user_id в Cookie
 @user_router.get("/users/me")
 async def get_current_user(user_id: int = Cookie(default=None, alias="user_id"), db: Session = Depends(get_db)):
